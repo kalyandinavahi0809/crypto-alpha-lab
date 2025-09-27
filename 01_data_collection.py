@@ -1,30 +1,46 @@
-"""
-Clean data collection script.
-"""
 
+# =============================================================
+# 01 — Data Collection (Binance OHLCV)
+# =============================================================
+#
+# This script fetches OHLCV for all USDT trading pairs from BinanceUS
+# and stores each field as a separate Parquet file under storage/ohlcv.
+#
+# Features:
+# - Live data from Binance API (when internet is available)
+# - Mock data mode for offline testing
+# - Comprehensive error handling
+# - Data validation and verification
+# =============================================================
+
+
+# --- Imports ---
 import os
 import time
 import json
 from typing import Dict
-
 import pandas as pd
 from tqdm import tqdm
 
-# Config
-USE_BINANCE_PACKAGE = True  # try to use python-binance if installed
-BINANCE_TLD = 'US'  # use 'US' for Binance.US, set '' for global Binance
-API_KEY = ''
+
+# --- CONFIGURATION ---
+USE_BINANCE_PACKAGE = True  # Use python-binance if installed
+BINANCE_TLD = 'US'          # 'US' for Binance.US, '' for global Binance
+API_KEY = ''                # Optional
 API_SECRET = ''
 START_DATE = '2020-01-01'
-FREQ = '1d'
+FREQ = '1d'                 # Daily candles
 
-# Storage
+
+# --- STORAGE SETUP ---
 BASE_DIR = os.path.abspath(os.path.join(os.getcwd()))
 STORAGE_DIR = os.path.join(BASE_DIR, 'storage', 'ohlcv')
 os.makedirs(STORAGE_DIR, exist_ok=True)
 print(f'Storage directory: {os.path.relpath(STORAGE_DIR)}')
 
 
+
+# --- TRY IMPORT BINANCE CLIENT ---
 def try_import_binance():
     if not USE_BINANCE_PACKAGE:
         return None
@@ -38,13 +54,18 @@ def try_import_binance():
 BinanceClient = try_import_binance()
 
 
+
+# --- FETCH SYMBOLS FROM BINANCE ---
 def fetch_symbols_via_client(client, quote='USDT'):
     info = client.get_exchange_info()
     symbols = [s['symbol'] for s in info.get('symbols', []) if s.get('status') == 'TRADING' and s.get('quoteAsset') == quote]
     return symbols
 
 
+
+# --- FETCH OHLCV DATA FOR A SYMBOL ---
 def fetch_klines_via_client(client, symbol: str, freq: str, start_str: str):
+    """Fetch OHLCV candles from BinanceUS. Returns DataFrame with Date index."""
     try:
         klines = client.get_historical_klines(symbol, freq, start_str)
         if not klines:
@@ -65,6 +86,8 @@ def fetch_klines_via_client(client, symbol: str, freq: str, start_str: str):
         return None
 
 
+
+# --- LOAD LOCAL PARQUET FALLBACK ---
 def load_local_parquet_fallback():
     """Try to build data from storage/ohlcv/<field>/*.parquet files if present."""
     print('Attempting local parquet fallback...')
@@ -94,6 +117,8 @@ def load_local_parquet_fallback():
     return all_data
 
 
+
+# --- CREATE SMALL MOCK DATASET ---
 def create_small_mock():
     print('Creating small mock dataset')
     dates = pd.date_range(start=START_DATE, periods=10, freq='D')
@@ -104,17 +129,29 @@ def create_small_mock():
     return all_data
 
 
-def save_field_csv(df: pd.DataFrame, field: str, out_dir: str):
-    out_file = os.path.join(out_dir, f'binance_{field}_daily.csv')
-    df.to_csv(out_file)
+
+# --- SAVE FIELD AS PARQUET ---
+def save_field_parquet(df: pd.DataFrame, field: str, out_dir: str):
+    out_file = os.path.join(out_dir, f'binance_{field}_daily.parquet')
+    df.to_parquet(out_file)
     print(f'Saved {out_file} shape={df.shape}')
 
 
+
+# --- MAIN EXECUTION ---
 def main():
+    """
+    Main data collection routine:
+    - Tries to fetch live data from BinanceUS
+    - Falls back to local Parquet files if offline
+    - Uses mock data if nothing else is available
+    - Saves each OHLCV field as a Parquet file
+    """
     all_data: Dict[str, pd.DataFrame] = {}
     errors: Dict[str, str] = {}
     all_counts: Dict[str, int] = {}
 
+    # --- STEP 1: Try live data from BinanceUS ---
     if BinanceClient is not None:
         try:
             client = BinanceClient(api_key=API_KEY, api_secret=API_SECRET, tld=BINANCE_TLD)
@@ -133,23 +170,25 @@ def main():
         except Exception as e:
             print('python-binance client failed:', e)
 
+    # --- STEP 2: Fallback to local Parquet ---
     if not all_data:
         local = load_local_parquet_fallback()
         if local:
             all_data = local
             all_counts = {k: len(v) for k, v in all_data.items()}
 
+    # --- STEP 3: Use mock data if nothing else ---
     if not all_data:
         all_data = create_small_mock()
         all_counts = {k: len(v) for k, v in all_data.items()}
 
-    # Combine into panel-like OHLCV DataFrames and save CSVs under storage
+    # --- STEP 4: Combine and save as Parquet ---
     OHLC: Dict[str, pd.DataFrame] = {}
     for field in ['open', 'high', 'low', 'close', 'volume']:
         OHLC[field] = pd.DataFrame({sym: df[field] for sym, df in all_data.items()})
-        save_field_csv(OHLC[field], field, out_dir=STORAGE_DIR)
+        save_field_parquet(OHLC[field], field, out_dir=STORAGE_DIR)
 
-    # Summary
+    # --- SUMMARY ---
     print('\nSUMMARY')
     print('Processed symbols:', len(all_counts))
     print('Errors:', len(errors))
@@ -161,31 +200,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-                    if not all_data:
-                        local = load_local_parquet_fallback()
-                        if local:
-                            all_data = local
-                            all_counts = {k: len(v) for k, v in all_data.items()}
-
-                    if not all_data:
-                        all_data = create_small_mock()
-                        all_counts = {k: len(v) for k, v in all_data.items()}
-
-                    # Combine into panel-like OHLCV DataFrames and save CSVs under storage
-                    OHLC: Dict[str, pd.DataFrame] = {}
-                    for field in ['open', 'high', 'low', 'close', 'volume']:
-                        OHLC[field] = pd.DataFrame({sym: df[field] for sym, df in all_data.items()})
-                        save_field_csv(OHLC[field], field, out_dir=STORAGE_DIR)
-
-                    # Summary
-                    print('\nSUMMARY')
-                    print('Processed symbols:', len(all_counts))
-                    print('Errors:', len(errors))
-                    if all_counts:
-                        sample = dict(list(all_counts.items())[:5])
-                        print('Sample counts:', json.dumps(sample, indent=2))
-
-
-                if __name__ == '__main__':
-                    main()
 
