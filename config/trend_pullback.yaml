@@ -9,3 +9,12 @@ data:
   start_month: null            # null = from the first month the venue publishes (listing / archive start)
   end_month: "2026-09"         # last complete month with klines + mark + funding published
   # Open interest is intentionally not ingested: out of scope for this test.
+
+features:
+  atr_n: 14
+  swing_k: [2, 3, 5]           # fractal half-width; a swing at bar t is known only at t+k
+  bos_close: [true, false]     # true = rule (close beyond the swing); false = wick ablation
+  zone_base_max_bars: 1        # last opposite-close candle (N>1 allows a base of up to N bars)
+  zone_lookback_bars: 10       # how far back from the impulse origin to look for that candle
+  stop_atr_buffer: 0.1         # stop = zone far edge -/+ 0.1 x ATR(14)
+  causality_audit: {bars: 6000, cuts: 8}
