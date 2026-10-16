@@ -48,7 +48,7 @@ TRADE_FIELDS = ("side", "entry_bar", "exit_bar", "entry_ref", "entry_px", "exit_
                 "exit_reason", "entry_type", "n_funding", "equity_before", "lev_capped",
                 "delevered")
 COUNTERS = ("liq_rejected", "delevered", "lev_capped", "invalid_stop", "mark_fallback",
-            "liquidations")
+            "liquidations", "no_mark_skipped")
 
 
 @njit(cache=True)
@@ -59,11 +59,11 @@ def _simulate(o, h, l, c, mo, mh, ml, mok, tick, atr, f_rate, f_px,
               allow_long, allow_short, entry_lo, entry_hi,
               target_r, trail_atr, risk_pct, max_lev, maker, taker, slip,
               stop_on_mark, optimistic, liq_policy, through_ticks,
-              mm_floors, mm_rates, eq0):
+              mm_floors, mm_rates, eq0, mkt_as_maker, require_mark):
     n = len(o)
     cap = n // 2 + 16
     T = np.full((cap, 26), np.nan)
-    cnt = np.zeros(6, np.int64)
+    cnt = np.zeros(7, np.int64)
     eq = np.empty(n)
     nt = 0
     cash = eq0
@@ -129,7 +129,11 @@ def _simulate(o, h, l, c, mo, mh, ml, mok, tick, atr, f_rate, f_px,
                         st = lim_s_stop[t]
                 if side == 0:
                     continue
-                if et == 1:
+                if require_mark and not mok[t]:
+                    # no mark price on this bar: liquidation could not be checked against MARK
+                    cnt[6] += 1
+                    continue
+                if et == 1 and not mkt_as_maker:
                     fill = ref * (1.0 + slip) if side == 1 else ref * (1.0 - slip)
                     fee_rate = taker
                 else:
@@ -346,6 +350,12 @@ class SimParams:
     initial_equity: float = 100_000.0
     allow_long: bool = True
     allow_short: bool = True
+    # baselines only: give market entries maker pricing (fill at the open, maker fee, no
+    # slippage) so a random-entry baseline pays the same entry costs as a limit-entry strategy
+    market_entry_as_maker: bool = False
+    # refuse entries on bars without a mark price (e.g. before the venue's mark history
+    # starts), so no position depends on a last-price liquidation check at entry
+    require_mark: bool = True
 
 
 @dataclass
@@ -419,7 +429,8 @@ def simulate(md: MarketData, oi: OrderIntents, params: SimParams, cost: CostMode
         float(params.max_leverage), float(cost.maker_fee), float(cost.taker_fee),
         float(cost.slippage_bps) * 1e-4, params.stop_trigger == "mark", bool(params.optimistic),
         1 if params.liq_policy == "delever" else 0, float(params.through_ticks),
-        md.mm_floors, md.mm_rates, float(params.initial_equity))
+        md.mm_floors, md.mm_rates, float(params.initial_equity),
+        bool(params.market_entry_as_maker), bool(params.require_mark))
     trades = pd.DataFrame(T, columns=list(TRADE_FIELDS))
     for col in ("side", "entry_bar", "exit_bar", "exit_reason", "entry_type", "n_funding"):
         trades[col] = trades[col].astype(np.int64)

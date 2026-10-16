@@ -30,3 +30,35 @@ simulation:
   stress_slippage_mult: 2.0    # extra stress run at 2x base slippage
   intrabar: pessimistic        # stop fills first when stop and target share a bar; optimistic also reported
   trail_atr_buffer: 0.1        # swing-trail stop = latest confirmed swing -/+ 0.1 x ATR
+  require_mark_for_entry: true # no entries on bars without a mark price (liquidation must be checkable on MARK)
+  grid_exec_variants: [optimistic, stress_2x]   # also run over the WHOLE grid (combined sides)
+
+strategy:
+  # Full grid (192 configs per timeframe). The hypothesis cell is sweep=true, bos=close,
+  # stop_trigger=last; the other values are ablations reported next to it.
+  entries: [limit, confirm]    # (a) maker limit at zone edge / (b) taker next open after confirmation
+  sweep: [true, false]
+  exits: [1.5, 2.0, 3.0, trail]
+  stop_trigger: [last, mark]
+  side_modes: [long, short, both]
+  hypothesis: {sweep: true, bos_close: true, stop_trigger: last}
+  # parameters chosen on IS only (pooled across symbols, combined long+short runs)
+  selectable: [swing_k, exits, entries]
+
+validation:
+  is_end: "2024-01-01"         # IS = listing -> 2023-12-31 (exclusive end)
+  oos_start: "2024-01-01"      # OOS = 2024-01-01 -> latest bar
+  selection_metric: expectancy_r
+  selection_min_trades: 100    # pooled IS trades required for a config to be selectable
+  walk_forward: {train_months: 12, test_months: 3, min_train_trades: 30}
+  leak_guard: {max_expectancy_r: 0.5, max_sharpe: 3.0, min_trades: 10}
+
+baselines:
+  random_seeds: 1000
+  edge_percentile: 95          # edge claim requires the strategy >= 95th pct of random OOS
+  trend_pullback_atr: [1.0, 2.0]
+  trend_pullback_lookback: 20
+
+output:
+  backtests_dataset: trend_pullback      # BACKTESTS/<dataset>/...
+  report_dir: reports/trend_pullback     # committed copies: REPORT.md, tables, figures

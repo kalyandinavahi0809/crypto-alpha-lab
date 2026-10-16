@@ -9,7 +9,7 @@ DAY_MS = 86_400_000
 
 def equity_daily(equity: np.ndarray, open_time_ms: np.ndarray, interval_ms: int) -> pd.Series:
     """Mark-to-market equity sampled at each UTC day's last bar close."""
-    close_time = pd.to_datetime(np.asarray(open_time_ms, np.int64) + interval_ms, unit="ms", utc=True)
+    close_time = pd.to_datetime(np.asarray(open_time_ms, np.int64) + interval_ms - 1, unit="ms", utc=True)
     s = pd.Series(np.asarray(equity, float), index=close_time)
     return s.groupby(s.index.floor("D")).last()
 

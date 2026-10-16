@@ -228,3 +228,19 @@ def test_trade_stats_breakeven_and_attribution():
     assert s["expectancy_r"] == 0.5 and s["profit_factor"] == 2.0
     assert s["trades_per_month"] == 2 and s["avg_hold_h"] == pytest.approx(2.5)
     assert s["net_pnl"] == pytest.approx(s["gross_pnl"] + s["fees"] + s["slippage"] + s["funding"])
+
+
+def test_market_entry_as_maker_for_matched_baselines():
+    bars = flat_bars(30)
+    res = simulate(md_for(bars), mkt(30, 1, 10, 0.05), SimParams(market_entry_as_maker=True), COST)
+    tr = res.trades.iloc[0]
+    assert tr.entry_px == 100.0 and tr.qty * 100.0 * COST.maker_fee <= -tr.fees
+
+
+def test_no_entry_without_mark_price():
+    bars = flat_bars(30)
+    bars.loc[10, ["mark_open", "mark_high", "mark_low", "mark_close"]] = np.nan
+    res = simulate(md_for(bars), mkt(30, 1, 10, 0.05), SimParams(), COST)
+    assert res.trades.empty and res.counters["no_mark_skipped"] == 1
+    res = simulate(md_for(bars), mkt(30, 1, 10, 0.05), SimParams(require_mark=False), COST)
+    assert len(res.trades) == 1
