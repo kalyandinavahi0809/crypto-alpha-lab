@@ -1,0 +1,9 @@
+# qdp platform configuration.
+# data_root may be overridden with the QDP_DATA_ROOT environment variable.
+data_root: data
+default_venue: binance_usdm
+http:
+  timeout_s: 60
+  retries: 5
+  backoff_s: 2.0
+  workers: 8

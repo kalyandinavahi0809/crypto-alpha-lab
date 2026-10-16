@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.ipynb_checkpoints/
+# qdp data lake (RAW/CLEANED/FEATURES/SIGNALS/BACKTESTS) is rebuilt from source, never committed
+data/

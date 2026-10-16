@@ -1,0 +1,11 @@
+# Trend Pullback + Liquidity Sweep study on USD-M perpetuals.
+# Every parameter of the study lives here; code has no strategy constants.
+
+data:
+  venue: binance_usdm          # venue adapter (venue-agnostic; swap for another registered adapter)
+  symbols: [BTCUSDT, ETHUSDT, SOLUSDT, XRPUSDT, DOGEUSDT]
+  intervals: [1h, 4h]          # tested independently
+  spot_interval: 1d            # spot benchmark (buy-and-hold) only
+  start_month: null            # null = from the first month the venue publishes (listing / archive start)
+  end_month: "2026-09"         # last complete month with klines + mark + funding published
+  # Open interest is intentionally not ingested: out of scope for this test.
