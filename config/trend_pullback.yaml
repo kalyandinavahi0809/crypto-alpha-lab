@@ -18,3 +18,15 @@ features:
   zone_lookback_bars: 10       # how far back from the impulse origin to look for that candle
   stop_atr_buffer: 0.1         # stop = zone far edge -/+ 0.1 x ATR(14)
   causality_audit: {bars: 6000, cuts: 8}
+
+simulation:
+  initial_equity: 100000
+  risk_per_trade: 0.005        # fixed 0.5% of equity between entry fill and stop
+  max_leverage: 5.0            # isolated margin = notional / max_leverage (capped at equity)
+  liq_policy: delever          # liquidation inside the stop -> raise margin if equity allows, else reject (both counted)
+  through_ticks: 1             # limit orders (entries and take-profits) must trade through by >= 1 tick
+  slippage_bps: 2.0            # stop / market / end-of-data fills (base case)
+  slippage_sensitivity_bps: [1.0, 3.0]
+  stress_slippage_mult: 2.0    # extra stress run at 2x base slippage
+  intrabar: pessimistic        # stop fills first when stop and target share a bar; optimistic also reported
+  trail_atr_buffer: 0.1        # swing-trail stop = latest confirmed swing -/+ 0.1 x ATR
