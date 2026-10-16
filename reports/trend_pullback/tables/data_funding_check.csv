@@ -1,0 +1,6 @@
+symbol,events,with_reported_interval,without_reported_interval,reported_vs_observed_checked,reported_vs_observed_disagree,intervals_seen_h
+BTCUSDT,7733,7395,338,7395,0,8
+ETHUSDT,7499,7395,104,7395,0,8
+SOLUSDT,6700,6700,0,6699,0,"2, 4, 8"
+XRPUSDT,7379,7379,0,7378,0,8
+DOGEUSDT,6821,6821,0,6820,0,8

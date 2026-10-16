@@ -1,0 +1,7 @@
+symbol,month,interval,rows_returned,first_bar,source
+BTCUSDT,2019-09,1h,0,,https://www.binance.com/fapi/v1/markPriceKlines
+BTCUSDT,2019-10,1h,0,,https://www.binance.com/fapi/v1/markPriceKlines
+BTCUSDT,2019-11,1h,0,,https://www.binance.com/fapi/v1/markPriceKlines
+BTCUSDT,2019-12,1h,205,2019-12-23 11:00:00+00:00,https://www.binance.com/fapi/v1/markPriceKlines
+ETHUSDT,2019-11,1h,0,,https://www.binance.com/fapi/v1/markPriceKlines
+ETHUSDT,2019-12,1h,205,2019-12-23 11:00:00+00:00,https://www.binance.com/fapi/v1/markPriceKlines

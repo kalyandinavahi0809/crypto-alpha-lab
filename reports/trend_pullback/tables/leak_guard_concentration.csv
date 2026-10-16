@@ -1,0 +1,5 @@
+tf,cid,oos_trades,oos_expectancy_r,oos_t_stat,top3_r,oos_expectancy_ex_top3,is_expectancy_r,is_trades
+1h,k5|xtrail|confirm|sweep|bosclose|mark,73,0.632499,1.19583,"23.8, 18.9, 18.8",-0.218673,0.029336,124
+1h,k5|xtrail|confirm|sweep|boswick|last,59,0.694184,1.08546,"23.8, 18.9, 18.8",-0.366383,-0.11869,102
+1h,k5|xtrail|confirm|sweep|boswick|mark,59,0.83306,1.28561,"23.8, 18.9, 18.8",-0.220162,-0.0831002,101
+4h,k2|xtrail|limit|sweep|boswick|mark,97,0.507025,1.10321,"34.0, 17.5, 10.2",-0.133375,-0.402268,154

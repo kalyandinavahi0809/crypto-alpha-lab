@@ -1,0 +1,121 @@
+tf,symbol,k,bos_close,leaky,bars,cuts,passed,error,columns
+1h,BTCUSDT,2,True,False,6000,8,True,,29
+1h,BTCUSDT,2,True,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(68350.0), truncated=np.float64(69228.6)): feature uses future data",
+1h,ETHUSDT,2,True,False,6000,8,True,,29
+1h,ETHUSDT,2,True,True,6000,8,False,"column 'L_trail_lv' changes at row 1982 when history is truncated at 1983 (full=np.float64(2282.7), truncated=np.float64(2327.11)): feature uses future data",
+1h,SOLUSDT,2,True,False,6000,8,True,,29
+1h,SOLUSDT,2,True,True,6000,8,False,"column 'L_trail_lv' changes at row 724 when history is truncated at 725 (full=np.float64(77.06), truncated=np.float64(82.76)): feature uses future data",
+1h,XRPUSDT,2,True,False,6000,8,True,,29
+1h,XRPUSDT,2,True,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(1.4626), truncated=np.float64(1.4926)): feature uses future data",
+1h,DOGEUSDT,2,True,False,6000,8,True,,29
+1h,DOGEUSDT,2,True,True,6000,8,False,"column 'L_trend' changes at row 1981 when history is truncated at 1983 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+1h,BTCUSDT,2,False,False,6000,8,True,,29
+1h,BTCUSDT,2,False,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(68350.0), truncated=np.float64(69228.6)): feature uses future data",
+1h,ETHUSDT,2,False,False,6000,8,True,,29
+1h,ETHUSDT,2,False,True,6000,8,False,"column 'L_trail_lv' changes at row 1982 when history is truncated at 1983 (full=np.float64(2282.7), truncated=np.float64(2327.11)): feature uses future data",
+1h,SOLUSDT,2,False,False,6000,8,True,,29
+1h,SOLUSDT,2,False,True,6000,8,False,"column 'L_trail_lv' changes at row 724 when history is truncated at 725 (full=np.float64(77.06), truncated=np.float64(82.76)): feature uses future data",
+1h,XRPUSDT,2,False,False,6000,8,True,,29
+1h,XRPUSDT,2,False,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(1.4626), truncated=np.float64(1.4926)): feature uses future data",
+1h,DOGEUSDT,2,False,False,6000,8,True,,29
+1h,DOGEUSDT,2,False,True,6000,8,False,"column 'L_trend' changes at row 1981 when history is truncated at 1983 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+1h,BTCUSDT,3,True,False,6000,8,True,,29
+1h,BTCUSDT,3,True,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(68350.0), truncated=np.float64(69228.6)): feature uses future data",
+1h,ETHUSDT,3,True,False,6000,8,True,,29
+1h,ETHUSDT,3,True,True,6000,8,False,"column 'L_trend' changes at row 1982 when history is truncated at 1983 (full=np.int8(-1), truncated=np.int8(0)): feature uses future data",
+1h,SOLUSDT,3,True,False,6000,8,True,,29
+1h,SOLUSDT,3,True,True,6000,8,False,"column 'L_trail_lv' changes at row 724 when history is truncated at 725 (full=np.float64(77.06), truncated=np.float64(82.76)): feature uses future data",
+1h,XRPUSDT,3,True,False,6000,8,True,,29
+1h,XRPUSDT,3,True,True,6000,8,False,"column 'L_trend' changes at row 910 when history is truncated at 913 (full=np.int8(-1), truncated=np.int8(0)): feature uses future data",
+1h,DOGEUSDT,3,True,False,6000,8,True,,29
+1h,DOGEUSDT,3,True,True,6000,8,False,"column 'L_trend' changes at row 1982 when history is truncated at 1983 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+1h,BTCUSDT,3,False,False,6000,8,True,,29
+1h,BTCUSDT,3,False,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(68350.0), truncated=np.float64(69228.6)): feature uses future data",
+1h,ETHUSDT,3,False,False,6000,8,True,,29
+1h,ETHUSDT,3,False,True,6000,8,False,"column 'L_trend' changes at row 1982 when history is truncated at 1983 (full=np.int8(-1), truncated=np.int8(0)): feature uses future data",
+1h,SOLUSDT,3,False,False,6000,8,True,,29
+1h,SOLUSDT,3,False,True,6000,8,False,"column 'L_trail_lv' changes at row 724 when history is truncated at 725 (full=np.float64(77.06), truncated=np.float64(82.76)): feature uses future data",
+1h,XRPUSDT,3,False,False,6000,8,True,,29
+1h,XRPUSDT,3,False,True,6000,8,False,"column 'L_trend' changes at row 910 when history is truncated at 913 (full=np.int8(-1), truncated=np.int8(0)): feature uses future data",
+1h,DOGEUSDT,3,False,False,6000,8,True,,29
+1h,DOGEUSDT,3,False,True,6000,8,False,"column 'L_trend' changes at row 1982 when history is truncated at 1983 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+1h,BTCUSDT,5,True,False,6000,8,True,,29
+1h,BTCUSDT,5,True,True,6000,8,False,"column 'L_trail_lv' changes at row 721 when history is truncated at 725 (full=np.float64(64232.8), truncated=np.float64(67150.0)): feature uses future data",
+1h,ETHUSDT,5,True,False,6000,8,True,,29
+1h,ETHUSDT,5,True,True,6000,8,False,"column 'L_trail_lv' changes at row 721 when history is truncated at 725 (full=np.float64(1844.46), truncated=np.float64(1933.0)): feature uses future data",
+1h,SOLUSDT,5,True,False,6000,8,True,,29
+1h,SOLUSDT,5,True,True,6000,8,False,"column 'L_trail_lv' changes at row 724 when history is truncated at 725 (full=np.float64(77.06), truncated=np.float64(82.76)): feature uses future data",
+1h,XRPUSDT,5,True,False,6000,8,True,,29
+1h,XRPUSDT,5,True,True,6000,8,False,"column 'L_trail_lv' changes at row 721 when history is truncated at 725 (full=np.float64(1.329), truncated=np.float64(1.3766)): feature uses future data",
+1h,DOGEUSDT,5,True,False,6000,8,True,,29
+1h,DOGEUSDT,5,True,True,6000,8,False,"column 'L_trail_lv' changes at row 721 when history is truncated at 725 (full=np.float64(0.09136), truncated=np.float64(0.09667)): feature uses future data",
+1h,BTCUSDT,5,False,False,6000,8,True,,29
+1h,BTCUSDT,5,False,True,6000,8,False,"column 'L_trail_lv' changes at row 721 when history is truncated at 725 (full=np.float64(64232.8), truncated=np.float64(67150.0)): feature uses future data",
+1h,ETHUSDT,5,False,False,6000,8,True,,29
+1h,ETHUSDT,5,False,True,6000,8,False,"column 'L_trail_lv' changes at row 721 when history is truncated at 725 (full=np.float64(1844.46), truncated=np.float64(1933.0)): feature uses future data",
+1h,SOLUSDT,5,False,False,6000,8,True,,29
+1h,SOLUSDT,5,False,True,6000,8,False,"column 'L_trail_lv' changes at row 724 when history is truncated at 725 (full=np.float64(77.06), truncated=np.float64(82.76)): feature uses future data",
+1h,XRPUSDT,5,False,False,6000,8,True,,29
+1h,XRPUSDT,5,False,True,6000,8,False,"column 'L_trail_lv' changes at row 721 when history is truncated at 725 (full=np.float64(1.329), truncated=np.float64(1.3766)): feature uses future data",
+1h,DOGEUSDT,5,False,False,6000,8,True,,29
+1h,DOGEUSDT,5,False,True,6000,8,False,"column 'L_trail_lv' changes at row 721 when history is truncated at 725 (full=np.float64(0.09136), truncated=np.float64(0.09667)): feature uses future data",
+4h,BTCUSDT,2,True,False,6000,8,True,,29
+4h,BTCUSDT,2,True,True,6000,8,False,"column 'L_trend' changes at row 589 when history is truncated at 590 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+4h,ETHUSDT,2,True,False,6000,8,True,,29
+4h,ETHUSDT,2,True,True,6000,8,False,"column 'L_trend' changes at row 589 when history is truncated at 590 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+4h,SOLUSDT,2,True,False,6000,8,True,,29
+4h,SOLUSDT,2,True,True,6000,8,False,"column 'L_trend' changes at row 589 when history is truncated at 590 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+4h,XRPUSDT,2,True,False,6000,8,True,,29
+4h,XRPUSDT,2,True,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(0.6164), truncated=np.float64(0.6219)): feature uses future data",
+4h,DOGEUSDT,2,True,False,6000,8,True,,29
+4h,DOGEUSDT,2,True,True,6000,8,False,"column 'S_trail_lv' changes at row 723 when history is truncated at 725 (full=np.float64(0.17025), truncated=np.float64(0.13579)): feature uses future data",
+4h,BTCUSDT,2,False,False,6000,8,True,,29
+4h,BTCUSDT,2,False,True,6000,8,False,"column 'L_trend' changes at row 589 when history is truncated at 590 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+4h,ETHUSDT,2,False,False,6000,8,True,,29
+4h,ETHUSDT,2,False,True,6000,8,False,"column 'L_trend' changes at row 589 when history is truncated at 590 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+4h,SOLUSDT,2,False,False,6000,8,True,,29
+4h,SOLUSDT,2,False,True,6000,8,False,"column 'L_trend' changes at row 589 when history is truncated at 590 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+4h,XRPUSDT,2,False,False,6000,8,True,,29
+4h,XRPUSDT,2,False,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(0.6164), truncated=np.float64(0.6219)): feature uses future data",
+4h,DOGEUSDT,2,False,False,6000,8,True,,29
+4h,DOGEUSDT,2,False,True,6000,8,False,"column 'S_trail_lv' changes at row 723 when history is truncated at 725 (full=np.float64(0.17025), truncated=np.float64(0.13579)): feature uses future data",
+4h,BTCUSDT,3,True,False,6000,8,True,,29
+4h,BTCUSDT,3,True,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(71297.0), truncated=np.float64(71412.2)): feature uses future data",
+4h,ETHUSDT,3,True,False,6000,8,True,,29
+4h,ETHUSDT,3,True,True,6000,8,False,"column 'L_trend' changes at row 589 when history is truncated at 590 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+4h,SOLUSDT,3,True,False,6000,8,True,,29
+4h,SOLUSDT,3,True,True,6000,8,False,"column 'L_trend' changes at row 722 when history is truncated at 725 (full=np.int8(0), truncated=np.int8(-1)): feature uses future data",
+4h,XRPUSDT,3,True,False,6000,8,True,,29
+4h,XRPUSDT,3,True,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(0.6164), truncated=np.float64(0.6219)): feature uses future data",
+4h,DOGEUSDT,3,True,False,6000,8,True,,29
+4h,DOGEUSDT,3,True,True,6000,8,False,"column 'L_trend' changes at row 723 when history is truncated at 725 (full=np.int8(0), truncated=np.int8(-1)): feature uses future data",
+4h,BTCUSDT,3,False,False,6000,8,True,,29
+4h,BTCUSDT,3,False,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(71297.0), truncated=np.float64(71412.2)): feature uses future data",
+4h,ETHUSDT,3,False,False,6000,8,True,,29
+4h,ETHUSDT,3,False,True,6000,8,False,"column 'L_trend' changes at row 589 when history is truncated at 590 (full=np.int8(0), truncated=np.int8(1)): feature uses future data",
+4h,SOLUSDT,3,False,False,6000,8,True,,29
+4h,SOLUSDT,3,False,True,6000,8,False,"column 'L_trend' changes at row 722 when history is truncated at 725 (full=np.int8(0), truncated=np.int8(-1)): feature uses future data",
+4h,XRPUSDT,3,False,False,6000,8,True,,29
+4h,XRPUSDT,3,False,True,6000,8,False,"column 'S_trail_lv' changes at row 589 when history is truncated at 590 (full=np.float64(0.6164), truncated=np.float64(0.6219)): feature uses future data",
+4h,DOGEUSDT,3,False,False,6000,8,True,,29
+4h,DOGEUSDT,3,False,True,6000,8,False,"column 'L_trend' changes at row 723 when history is truncated at 725 (full=np.int8(0), truncated=np.int8(-1)): feature uses future data",
+4h,BTCUSDT,5,True,False,6000,8,True,,29
+4h,BTCUSDT,5,True,True,6000,8,False,"column 'L_trend' changes at row 722 when history is truncated at 725 (full=np.int8(-1), truncated=np.int8(0)): feature uses future data",
+4h,ETHUSDT,5,True,False,6000,8,True,,29
+4h,ETHUSDT,5,True,True,6000,8,False,"column 'S_trail_lv' changes at row 722 when history is truncated at 725 (full=np.float64(3167.45), truncated=np.float64(3250.0)): feature uses future data",
+4h,SOLUSDT,5,True,False,6000,8,True,,29
+4h,SOLUSDT,5,True,True,6000,8,False,"column 'L_trend' changes at row 586 when history is truncated at 590 (full=np.int8(-1), truncated=np.int8(0)): feature uses future data",
+4h,XRPUSDT,5,True,False,6000,8,True,,29
+4h,XRPUSDT,5,True,True,6000,8,False,"column 'L_trend' changes at row 723 when history is truncated at 725 (full=np.int8(0), truncated=np.int8(-1)): feature uses future data",
+4h,DOGEUSDT,5,True,False,6000,8,True,,29
+4h,DOGEUSDT,5,True,True,6000,8,False,"column 'L_trail_lv' changes at row 586 when history is truncated at 590 (full=np.float64(0.18977), truncated=np.float64(0.1802)): feature uses future data",
+4h,BTCUSDT,5,False,False,6000,8,True,,29
+4h,BTCUSDT,5,False,True,6000,8,False,"column 'L_trend' changes at row 722 when history is truncated at 725 (full=np.int8(-1), truncated=np.int8(0)): feature uses future data",
+4h,ETHUSDT,5,False,False,6000,8,True,,29
+4h,ETHUSDT,5,False,True,6000,8,False,"column 'S_trail_lv' changes at row 722 when history is truncated at 725 (full=np.float64(3167.45), truncated=np.float64(3250.0)): feature uses future data",
+4h,SOLUSDT,5,False,False,6000,8,True,,29
+4h,SOLUSDT,5,False,True,6000,8,False,"column 'L_trend' changes at row 586 when history is truncated at 590 (full=np.int8(-1), truncated=np.int8(0)): feature uses future data",
+4h,XRPUSDT,5,False,False,6000,8,True,,29
+4h,XRPUSDT,5,False,True,6000,8,False,"column 'L_trend' changes at row 723 when history is truncated at 725 (full=np.int8(0), truncated=np.int8(-1)): feature uses future data",
+4h,DOGEUSDT,5,False,False,6000,8,True,,29
+4h,DOGEUSDT,5,False,True,6000,8,False,"column 'L_trail_lv' changes at row 586 when history is truncated at 590 (full=np.float64(0.18977), truncated=np.float64(0.1802)): feature uses future data",

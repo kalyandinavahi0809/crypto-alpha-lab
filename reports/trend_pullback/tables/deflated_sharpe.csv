@@ -1,0 +1,5 @@
+tf,window,cid,configs_in_selection_grid,configs_tested_total,trial_sr_std_daily,sr,sr_annual,sr0,sr0_annual,dsr,psr0,skew,kurtosis,n_trials,n_obs
+1h,IS,k3|x2.0|confirm|sweep|bosclose|last,192,1152,0.0536846,0.062496,1.19398,0.147748,2.82273,0.000178956,0.995559,1.87439,16.4439,192,1575
+1h,OOS,k3|x2.0|confirm|sweep|bosclose|last,192,1152,0.0536846,-0.072584,-1.38671,0.147748,2.82273,9.65067e-12,0.0135223,0.809335,17.1342,192,1003
+4h,IS,k3|xtrail|limit|sweep|bosclose|last,192,1152,0.0329828,0.0046233,0.0883281,0.0907737,1.73423,0.000149746,0.576928,23.9618,814.457,192,1575
+4h,OOS,k3|xtrail|limit|sweep|bosclose|last,192,1152,0.0329828,-0.0188425,-0.359986,0.0907737,1.73423,0.000278904,0.2765,0.420714,32.7558,192,1003
